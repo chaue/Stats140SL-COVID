@@ -1,7 +1,7 @@
 ---
 poster_height: "36in"
 poster_width: "48in"
-title: State-wide Mask Mandates Reduce COVID-19 Cases
+title: State-wide Mask Mandates Correlate to Reduced COVID-19 Cases
 author:
   - name: Edwin Chau
   - name: June Lee
@@ -41,10 +41,10 @@ library(grid)
 
 # Introduction
 
-In 2020, COVID-19 has become a serious pandemic and influenced millions of people’s lives. As of December 5, 2020, there are about 14.3 million confirmed cases of the COVID-19 in the United States and 278,000 confirmed deaths as a result of it. As the number of confirmed cases and deaths show an increasing trend since the beginning of 2020, it is crucial to attempt to identify methods for combating the disease. Our team believes that the mask mandate in each state would be a possible effective method of combating the COVID-19 For the purpose of our study, the proportion of confirmed cases in the state to the recorded population of the state will be used as the response variable to describe the prevalence of COVID-19 in a particular state. 
+In 2020, COVID-19 has become a serious pandemic and influenced millions of people’s lives. As of December 5, 2020, there are about 14.3 million confirmed cases of the COVID-19 in the United States and 278,000 confirmed deaths as a result of it. As the number of confirmed cases and deaths show an increasing trend since the beginning of 2020, it is crucial to attempt to identify methods for combating the disease. There has been much discourse surrounding the importance of wearing masks to curb the rate of spread of COVID-19, and we explore this relationship through rigorous statistical tests and inference. Because states with larger overall populations will likely have more cases, the proportion of confirmed cases in each state will be used as the response variable to describe the prevalence of COVID-19 in a particular state. 
 
 # Research Question
-We want to know whether the presence of a state-wide mask mandate is correlated with the overall number of Coronavirus cases in the state. We hypothesize that a state-wide mask mandate is correlated with a lower number of overall cases.
+We want to know whether the presence of a state-wide mask mandate is correlated with the overall number of COVID-19 cases in the state. We hypothesize that a state-wide mask mandate is correlated with a lower number of overall cases.
 
 # Data 
 
@@ -60,36 +60,33 @@ We utilized an ordinary linear regression(OLS) model to investigate the signific
 
 <center>  
   
-![Figure 1: The distribution of states with and without mask mandates.](mask.jpg){height=900px}
+![Figure 1: The distribution of states with and without mask mandates.](mask.jpg){height=800px}
 
 </center>
 
 <center>  
   
-![Figure 2: The distribution of cumulative proportion of confirmed cases.](cumulative.jpg){height=900px}
+![Figure 2: The distribution of cumulative proportion of confirmed cases.](cumulative.jpg){height=800px}
 
 </center>
 
 # Results
 
-Setting the proportion of confirmed cases as the independent variable and mask mandate as the dependent variable, we determined that the mask mandate variable was significant($p < 0.01$). Diagnostic plots showed that the data was approximately normal, and no assumptions were blatantly violated. 
+Setting the proportion of confirmed cases as the independent variable and mask mandate as the dependent variable, we determined that the mask mandate variable was significant($p < 0.01$). The slope of the regression line was $-1.79$, indicating that the presence of a mask mandate led to a decrease in the predicted proportion of a state’s confirmed cases of around $1.8\%$, supporting our hypothesis that the presence of a mask mandate is an effective method of combating COVID-19. Diagnostic plots showed that the data was approximately normal, and no assumptions were blatantly violated. 
 
-Next, we considered the number of daily new cases per state for a total of $11500$ data points. Because this attribute was heavily skewed, we performed a log transformation, excluding any non-positive rows for a total of $11087$ remaining rows. A linear regression model found that the mask variable was highly significant($p < 0.001$) with a reverse transformed slope of $0.72$. This can be interpreted as a 28% reduction in a state’s proportion of daily new cases if it has a state-wide mask mandate.
+Next, we considered the number of daily new cases per state for a total of $11500$ data points. Because this attribute was heavily skewed, we performed a log transformation, excluding any non-positive rows for a total of $11087$ remaining rows. A linear regression model found that the mask variable was highly significant($p < 0.001$) with a reverse transformed slope of $0.72$. This can be interpreted as a 28% reduction in a state’s proportion of daily new cases if it has a state-wide mask mandate. Again, diagnostic plots did not show any blatantly violated assumptions.
 
 <center>  
   
-![Figure 3: The distribution of daily log proportion of confirmed cases.](logtransf.png){height=900px}
+![Figure 3: The distribution of daily log proportion of confirmed cases.](logtransf.png){height=800px}
 
 </center>
 
 
 # Conclusion
 
-Through the analysis using ordinary linear regression model to investigate the significance of the mask mandate attribute when predicting a state’s proportion of confirmed cases, we deemed the mask mandate to be a significant predictor (p < 0.01). The slope of the regression line was -1.79, indicating that the presence of a mask mandate led to a decrease in the predicted proportion of a state’s confirmed cases of around 1.8%, supporting our hypothesis that the presence of a mask mandate is an effective method of combating the Coronavirus disease. 
-
-Besides the presence of a mask mandate in the state, we are interested in investigating other possible predictors of a state’s proportion of confirmed cases, such as the political affiliation of the state or the presence of state-wide curfews. We are also interested in investigating other predictors of the Coronavirus disease that may not be particularly associated with state differences, such as the seasonality.
+Through the analysis using ordinary linear regression model to investigate the significance of the mask mandate attribute when predicting a state’s proportion of confirmed cases, we deemed the mask mandate to be a significant predictor. While we cannot conclude that the presence of a mask mandate is a direct cause of lower confirmed cases in a state, it is certainly highly correlated. 
 
 
-  
 # References
 
