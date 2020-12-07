@@ -50,9 +50,9 @@ We want to know whether the presence of a state-wide mask mandate is correlated 
 
 Our data is publicly provided by JSU CSSE, who is unaffiliated with this analysis. The original data was in the form of CSV files, each one containing daily observational data for $60$ states and provinces in the United States ranging from April $4, 2020$ to the present day. 
 
-We read and formatted the data using the Pandas Python library \cite{pandas}. We first combined all CSV data into a single dataframe, keeping only the $50$ states and observations before October $23$. This resulted in $11500$ rows and $14$ columns. The column data included attributes such as state name, timestamps, confirmed cases, deaths, and hospitalization rates. Note that this data is time series data, thus we will need to perform tasks such as differencing and re-coding the timestamps.
+We read and formatted the data using the Pandas Python library (@pandas). We first combined all CSV data into a single dataframe, keeping only the $50$ states and observations before October $23$. This resulted in $11500$ rows and $14$ columns. The column data included attributes such as state name, timestamps, confirmed cases, deaths, and hospitalization rates. Because attributes such as confirmed cases and deaths are time series cumulative, we then differenced the numeric attributes by subtracting the current value from that of the previous day and setting the initial value at $0$. Finally, we divided numeric attributes by the state’s population.
 
-Next, we imputed missing values in the form of NAs. Imputation was done with Python's scikit-learn \cite{scikit-learn} KNN imputer with $k = 10$ to avoid losing data. Because attributes such as confirmed cases and deaths are cumulative, we then differenced the numeric attributes by subtracting the current value from that of the previous day and setting the initial value at $0$. Finally, we divided numeric attributes by the state’s population
+The mask mandate variable was hard coded, where $1$ denotes the presence of a mandate and $0$ denotes the lack of one. This data was provided by Axios (@mask).
 
 # Methods
 
@@ -74,7 +74,7 @@ We utilized an ordinary linear regression(OLS) model to investigate the signific
 
 Setting the proportion of confirmed cases as the independent variable and mask mandate as the dependent variable, we determined that the mask mandate variable was significant($p < 0.01$). The slope of the regression line was $-1.79$, indicating that the presence of a mask mandate led to a decrease in the predicted proportion of a state’s confirmed cases of around $1.8\%$, supporting our hypothesis that the presence of a mask mandate is an effective method of combating COVID-19. Diagnostic plots showed that the data was approximately normal, and no assumptions were blatantly violated. 
 
-Next, we considered the number of daily new cases per state for a total of $11500$ data points. Because this attribute was heavily skewed, we performed a log transformation, excluding any non-positive rows for a total of $11087$ remaining rows. A linear regression model found that the mask variable was highly significant($p < 0.001$) with a reverse transformed slope of $0.72$. This can be interpreted as a 28% reduction in a state’s proportion of daily new cases if it has a state-wide mask mandate. Again, diagnostic plots did not show any blatantly violated assumptions.
+Next, we considered the number of daily new cases per state for a total of $11500$ data points. Because this attribute was heavily skewed, we performed a log transformation, excluding any non-positive rows for a total of $11087$ remaining rows. A linear regression model found that the mask variable was highly significant($p < 0.001$) with a reverse-transformed slope of $0.72$. This can be interpreted as a 28% reduction in a state’s proportion of daily new cases if it has a state-wide mask mandate. Again, diagnostic plots did not show any blatantly violated assumptions.
 
 <center>  
   
@@ -89,4 +89,4 @@ Through the analysis using ordinary linear regression model to investigate the s
 
 
 # References
-
+\nocite{ggplot2}
