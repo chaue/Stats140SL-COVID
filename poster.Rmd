@@ -19,7 +19,7 @@ primary_colour: "#2774AE"
 secondary_colour: "#FFD100"
 accent_colour: "#003B5C"
 affiliation_textcol: "#FFD100"
-logoright_name: http&#58;//www.firststar.org/wp-content/uploads/2015/02/ucla1.jpg
+logoright_name: logo_UCLA_blue_boxed.png
 ## https://ev0awwmgj4-flywheel.netdna-ssl.com/wp-content/uploads/images/products/products-University-of-CA-Los-Angeles-Seal.jpg
 output: 
   posterdown::posterdown_html:
