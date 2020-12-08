@@ -50,7 +50,7 @@ We want to know whether the presence of a state-wide mask mandate is correlated 
 
 Our data is publicly provided by JSU CSSE, who is unaffiliated with this analysis. The original data was in the form of CSV files, each one containing daily observational data for $60$ states and provinces in the United States ranging from April $4, 2020$ to the present day. 
 
-We read and formatted the data using the Pandas Python library (@pandas). We first combined all CSV data into a single dataframe, keeping only the $50$ states and observations before October $23$. This resulted in $11500$ rows and $14$ columns. The column data included attributes such as state name, timestamps, confirmed cases, deaths, and hospitalization rates. Because attributes such as confirmed cases and deaths are time series cumulative, we then differenced the numeric attributes by subtracting the current value from that of the previous day and setting the initial value at $0$. Finally, we divided numeric attributes by the state’s population.
+We read and formatted the data using the Pandas Python library (@pandas). We first combined all CSV data into a single dataframe, keeping only the $50$ states and observations before October $23$. This resulted in $11500$ rows and $14$ columns. The column data included attributes such as state name, timestamps, confirmed cases, and deaths. Because attributes such as confirmed cases and deaths are time series cumulative, we then differenced them by subtracting the current value from that of the previous day and setting the initial value at $0$. Finally, we divided numeric attributes by the state’s population.
 
 The mask mandate variable was hard coded, where $1$ denotes the presence of a mandate and $0$ denotes the lack of one. This data was provided by Axios (@mask).
 
@@ -60,13 +60,13 @@ We utilized an ordinary linear regression(OLS) model to investigate the signific
 
 <center>  
   
-![Figure 1: The distribution of states with and without mask mandates.](mask.jpg){height=800px}
+![Figure 1: The distribution of states with and without mask mandates.](mask.png){height=800px}
 
 </center>
 
 <center>  
   
-![Figure 2: The distribution of cumulative proportion of confirmed cases.](cumulative.jpg){height=800px}
+![Figure 2: The distribution of cumulative percentage of confirmed cases.](cumulative.png){height=800px}
 
 </center>
 
@@ -78,7 +78,7 @@ Next, we considered the number of daily new cases per state for a total of $1150
 
 <center>  
   
-![Figure 3: The distribution of daily log proportion of confirmed cases.](logtransf.png){height=800px}
+![Figure 3: The distribution of daily log proportion of confirmed cases across all states.](logtransf.png){height=800px}
 
 </center>
 
